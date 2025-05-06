@@ -11,3 +11,9 @@ function addBookToLibrary() {
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
 }
+
+let newBookBtn = document.getElementById("new-book-btn");
+newBookBtn.addEventListener("click", function(){
+    let newBookForm = document.querySelector("#new-book-form");
+    newBookForm.style.display = "block";
+})
