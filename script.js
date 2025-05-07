@@ -7,6 +7,15 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
+}
+
+function toggleRead(index) {
+    myLibrary[index].toggleRead();
+    render();
+}
+
 function render() {
     let bookshelf = document.querySelector("#bookshelf");
     bookshelf.innerHTML = "";
@@ -27,9 +36,8 @@ function render() {
             </div>
             <div class="card-pages">
                 <p class="pages">${book.pages} pages</p>
-            </div class="card-read">
-                <p class="read-status ${readClass}">${readText}</p>
             </div>
+            <button class="read-status ${readClass}" onclick="toggleRead(${i})" style="border: none; color: black;">${readText}</button>
         </div>
         `
         bookshelf.appendChild(bookEl);
