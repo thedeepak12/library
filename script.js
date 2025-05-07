@@ -7,6 +7,35 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+function render() {
+    let bookshelf = document.querySelector("#bookshelf");
+    bookshelf.innerHTML = "";
+    for (let i = 0; i < myLibrary.length; i++) {
+        let book = myLibrary[i];
+        let bookEl = document.createElement("div");
+
+        const readClass = book.read ? "read-yes" : "read-no";
+        const readText = book.read ? "Read" : "Not Read";
+
+        bookEl.innerHTML = ` 
+        <div class="book-card">
+            <div class="card-title">
+                <h3 class="title">${book.title}</h3>
+            </div>
+            <div class="card-author">
+                <h5 class="author">by ${book.author}</h5>
+            </div>
+            <div class="card-pages">
+                <p class="pages">${book.pages} pages</p>
+            </div class="card-read">
+                <p class="read-status ${readClass}">${readText}</p>
+            </div>
+        </div>
+        `
+        bookshelf.appendChild(bookEl);
+    }
+}
+
 function addBookToLibrary() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
@@ -14,6 +43,7 @@ function addBookToLibrary() {
     let read = document.getElementById("read").checked;
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
+    render();
 }
 
 let newBookBtn = document.getElementById("new-book-btn");
