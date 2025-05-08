@@ -145,7 +145,7 @@
     line-height: 1.2;
 }
 
-.read-status {
+.read-status, .remove-btn {
     display: inline-block;
     text-align: center;
     padding: 5px 10px;
@@ -155,14 +155,14 @@
 }
   
 .read-yes {
-    background-color: #9fff9c;
+    background-color: #6bff66;
 }
   
 .read-no {
-    background-color: #ff9c9c;
+    background-color: #ff6666;
 }
 
-.read-yes, .read-no {
+.read-yes, .read-no, .remove-btn {
     cursor: pointer;
     width: 90%;
     height: 40px;

@@ -35,22 +35,32 @@ function render() {
                 <h5 class="author">by ${book.author}</h5>
             </div>
             <div class="card-pages">
-                <p class="pages">${book.pages} pages</p>
+                <p class="pages" style="font-size: 15px;">${book.pages} pages</p>
             </div>
+            
             <button class="read-status ${readClass}" onclick="toggleRead(${i})" style="border: none; color: black;">${readText}</button>
+
+            <button class="remove-btn" onclick="removeBookFromLibrary(${i})" style="border: none; color: black; background-color: #f0eef1;">Remove book</button>
         </div>
         `
         bookshelf.appendChild(bookEl);
     }
 }
 
-function addBookToLibrary() {
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pages = document.getElementById("pages").value;
-    let read = document.getElementById("read").checked;
+function addBookToLibrary(title, author, pages, read) {
+    if (!title || !author || !pages || read === undefined) {
+        title = document.getElementById("title").value;
+        author = document.getElementById("author").value;
+        pages = document.getElementById("pages").value;
+        read = document.getElementById("read").checked;
+    }
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
+    render();
+}
+
+function removeBookFromLibrary(index) {
+    myLibrary.splice(index, 1);
     render();
 }
 
