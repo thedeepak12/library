@@ -64,10 +64,13 @@ function removeBookFromLibrary(index) {
     render();
 }
 
+const overlay = document.getElementById("overlay");
+
 let newBookBtn = document.getElementById("new-book-btn");
 newBookBtn.addEventListener("click", function(){
     let newBookForm = document.querySelector("#new-book-form");
     newBookForm.style.display = "block";
+    overlay.style.display = "block";
 })
 
 document.querySelector("#new-book-form").addEventListener("submit", function(event) {
@@ -76,6 +79,7 @@ document.querySelector("#new-book-form").addEventListener("submit", function(eve
     event.target.reset();
     let newBookForm = document.querySelector("#new-book-form");
     newBookForm.style.display = "none";
+    overlay.style.display = "none";
 })
 
 document.addEventListener("click", function(event) {
@@ -88,4 +92,18 @@ document.addEventListener("click", function(event) {
 
     form.reset();
     form.style.display = "none";
+    overlay.style.display = "none";
 });
+
+addBookToLibrary("Harry Potter", "J.K. Rowling", 3872, true);
+addBookToLibrary("Cosmos", "Carl Sagan", 396, true);
+addBookToLibrary("Dune", "Frank Herbert", 412, false);
+addBookToLibrary("1984", "George Orwell", 322, false);
+addBookToLibrary("Atomic Habits", "James Clear", 320, true);
+addBookToLibrary("The Alchemist", "Paulo Coelho", 208, false);
+addBookToLibrary("The C++ Programming Language", "Bjarne Stoustrup", 1376, false);
+addBookToLibrary("Introduction to Algorithms (CLRS)", "Cormen, Leiserson, Rivest, Stein", 1312, true);
+addBookToLibrary("Competitive Programming Handbook", "Antii Laaksonen", 296, true);
+addBookToLibrary("Eloquent JavaScript", "Marijn Haverbeke", 472, false);
+
+render();
